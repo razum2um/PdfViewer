@@ -120,14 +120,10 @@ public class Controller {
 		currentFile.addListener(new ChangeListener<PDFFile>() {
 			@Override
 			public void changed(ObservableValue<? extends PDFFile> observable, PDFFile oldFile, PDFFile newFile) {
-				try {
-					String title = newFile == null ? "PDF Viewer" : newFile.getStringMetadata("Title") ;
-					Window window = pagination.getScene().getWindow();
-					if (window instanceof Stage) {
-						((Stage)window).setTitle(title);
-					}
-				} catch (IOException e) {
-					showErrorMessage("Could not read title from pdf file", e);
+				String title = "PDF Viewer";
+				Window window = pagination.getScene().getWindow();
+				if (window instanceof Stage) {
+					((Stage)window).setTitle(title);
 				}
 			}
 			
